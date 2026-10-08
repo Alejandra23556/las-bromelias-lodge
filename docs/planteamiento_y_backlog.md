@@ -58,3 +58,6 @@ Digitalizar y automatizar la gestión de reservas eliminará los errores manuale
 | **HU-18** | Recepción | Como recepcionista, necesito controlar la entrada y salida física de los huéspedes, para saber la disponibilidad real. | • Botón "Check-In" cambia a "Cabaña Ocupada".<br>• Botón "Check-Out" cambia a "Cabaña Disponible". | **Alta** |
 | **HU-19** | Admin | Como administrador necesito generar un reporte de ganancias generadas para poder medir el rendimiento comercial. | • Cálculo del monto total recaudado por reservas dentro de un rango de fechas (trimestral/semestral). | **Media** |
 | **HU-20** | Admin | Como administrador, necesito de una bitácora con los cambios de estado en las reservas para así poder auditar las operaciones. | • Tabla de solo lectura: ID Reserva, Estado anterior, Estado actual, Usuario, Fecha y Hora. | **Media** |
+Markdown
+## Mapa de Navegación y Flujo de Pantallas
+![Mapa de Navegación](WhatsApp%20Image%202026-10-07%20at%2017.01.49.jpeg)
