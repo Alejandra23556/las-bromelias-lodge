@@ -16,7 +16,7 @@ Aplicación web transaccional para la gestión de reservas en línea desarrollad
 ---
 
 ## Prototipo y Documentación
-* **Prototipo en Figma:** [Ver Prototipo Navegable](https://www.figma.com/design/H83VJLCOkHO54u5D0KVTvD/Prototipo Las Bromelias?node-id=0-1&t=0Y6rhaDF6WMyIGvW-1)
+* **Prototipo en Figma:** [Ver Prototipo Navegable](https://www.figma.com/design/H83VJLCOkHO54u5D0KVTvD/Prototipo-Las-Bromelias?node-id=0-1)
 * **Documentación del Avance 1:** Disponible en la carpeta `/docs`.
 
 ---
