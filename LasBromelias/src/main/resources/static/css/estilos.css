@@ -1,0 +1,70 @@
+/* Color beige del navbar*/
+.custom-navbar {
+    background-color: #D9CDB8;
+}
+
+/* Color de los enlaces */
+.custom-link {
+    color: #4A2E1B !important;
+    font-weight: 500;
+}
+
+.custom-link:hover {
+    color: #2D1A0E !important;
+}
+
+/* Botón Iniciar Sesión*/
+.btn-outline-custom {
+    color: #4A2E1B;
+    border-color: #4A2E1B;
+    background-color: transparent;
+}
+
+.btn-outline-custom:hover {
+    background-color: #4A2E1B;
+    color: #FFFFFF;
+    border-color: #4A2E1B;
+}
+
+/* Botón Registrarse */
+.btn-custom {
+    background-color: #4A2E1B;
+    color: #FFFFFF;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #352012;
+    color: #FFFFFF;
+}
+
+/* Color café oscuro del footer idéntico al de la imagen */
+.custom-footer {
+    background-color: #2D1A0E; /* O ajusta el tono café que estés usando */
+}
+
+/* Estilo opcional para los íconos circulares */
+.social-icon {
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+/* Para el logo del header */
+.navbar-brand img {
+    height: 90px !important;
+    width: auto !important;
+}
+
+/* Para el logo del footer */
+.footer-logo img {
+    height: 70px !important;
+    width: auto !important;
+}
