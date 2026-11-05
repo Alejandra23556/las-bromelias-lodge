@@ -14,7 +14,7 @@ public class LoginController {
 
     private final UsuarioService usuarioService;
 
-    //Al utilizar Spting Security, el login se realiza fuera del controller. Consultar
+    //Al utilizar Spring Security, el login se realiza fuera del controller. Consultar
     //security.xml
 
     //Metodo para mostrar mensajes en el login

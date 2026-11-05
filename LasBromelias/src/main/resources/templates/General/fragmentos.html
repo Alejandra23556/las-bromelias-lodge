@@ -96,3 +96,33 @@
     </div>
 </footer>
 
+
+<!-- Fragmento 3: Pagina principal -->
+<main th:fragment="portada" class="pagina-inicio">
+    <section class="inicio-titulo container text-center">
+        <h2>Desconéctate de la Rutina en el</h2>
+        <h2>Corazón del Cerro de la Muerte</h2>
+    </section>
+
+    <section class="banner-cabanas container" aria-labelledby="titulo-cabanas">
+        <div class="banner-cabanas-imagen">
+            <img th:src="@{/uploads/cabanas/cabaña paisaje.jpg}" alt="Cabaña de madera rodeada de naturaleza">
+        </div>
+        <div class="banner-cabanas-contenido">
+            <h2 id="titulo-cabanas">Descubre Nuestras Cabañas</h2>
+            <a class="btn btn-banner-cabanas" th:href="@{/cabanas}">Explorar Cabañas</a>
+        </div>
+    </section>
+
+    <section class="reserva-inicio container">
+        <div class="reserva-inicio-info">
+            <h2>Realiza tu Reservación en Pocos Minutos</h2>
+            <p>Explora fechas disponibles, añade servicios extra y asegura tu cabaña al instante.</p>
+            <a class="btn btn-reserva-inicio" th:href="@{/registro/nuevo}">Reserva Aqui</a>
+        </div>
+        <div class="reserva-inicio-galeria" aria-label="Vistas exteriores de las cabañas">
+            <img th:src="@{/uploads/cabanas/cabaña1.jpeg}" alt="Vista exterior de una cabaña de madera">
+            <img th:src="@{/uploads/cabanas/cabaña2.jpeg}" alt="Cabaña de madera en el bosque">
+        </div>
+    </section>
+</main>

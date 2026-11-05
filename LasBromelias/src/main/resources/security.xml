@@ -17,6 +17,7 @@
         <intercept-url pattern="/js/**" access="permitAll" />
         <intercept-url pattern="/images/**" access="permitAll" />
         <intercept-url pattern="/img/**" access="permitAll" />
+        <intercept-url pattern="/uploads/**" access="permitAll" />
         <intercept-url pattern="/admin/**" access="hasAuthority('ROLE_ADMIN')" />
         <intercept-url pattern="/recepcion/**" access="hasAnyAuthority('ROLE_ADMIN', 'ROLE_RECEPTION')" />
         <intercept-url pattern="/cliente/**" access="hasAuthority('ROLE_CLIENT')" />

@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div th:fragment="formReserva">
+    <form th:action="@{/cliente/reservas/crear}" method="post" class="reserva-form p-4 p-md-5 shadow-sm">
+        <p th:if="${errorReserva}" th:text="${errorReserva}" class="alert alert-danger"></p>
+        <h2 class="mb-4 fw-bold" style="color: #2D1A0E;">Elija la fecha</h2>
 
-</body>
-</html>
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <label for="fechaEntrada" class="form-label fw-semibold">Llegada</label>
+                <div class="input-group">
+                    <input type="date" id="fechaEntrada" name="fechaEntrada"
+                           class="form-control rounded-start-1" placeholder="Fecha/example" required>
+                    <span class="input-group-text bg-white"><i class="bi bi-calendar-event"></i></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="fechaSalida" class="form-label fw-semibold">Salida</label>
+                <div class="input-group">
+                    <input type="date" id="fechaSalida" name="fechaSalida"
+                           class="form-control rounded-start-1" placeholder="Fecha/example" required>
+                    <span class="input-group-text bg-white"><i class="bi bi-calendar-event"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mb-3 fw-bold" style="color: #2D1A0E;">Elija la cabaña</h2>
+        <div class="row g-3 mb-4">
+            <div class="col-md-6" th:each="cabana : ${cabanas}">
+                <input type="radio" class="btn-check" name="cabanaId"
+                       th:id="|cabana${cabana.id}|" th:value="${cabana.id}" required>
+                <label class="reserva-cabana-option d-flex align-items-center gap-3 p-3 h-100"
+                       th:for="|cabana${cabana.id}|">
+                    <i class="bi bi-house-door fs-3" style="color: #4A2E1B;"></i>
+                    <span>
+                        <span class="d-block fw-bold" th:text="${cabana.nombre}">Cabaña #1</span>
+                        <span class="small text-muted" th:text="${cabana.descripcion}">Example</span>
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="cantidadHuespedes" class="form-label fw-semibold">Cantidad de personas</label>
+            <input type="number" id="cantidadHuespedes" name="cantidadHuespedes"
+                   class="form-control rounded-1" min="1" placeholder="Cantidad de personas" required>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-custom rounded-2 px-5 py-2 fw-semibold">
+                Realizar Reserva
+            </button>
+        </div>
+    </form>
+</div>

@@ -60,6 +60,14 @@ public class UsuarioService implements UserDetailsService {
         return usuarioRepository.findById(idUsuario);
     }
 
+    @Transactional(readOnly = true)
+    public Optional<Usuario> getUsuarioPorCorreo(String correo) {
+        if (correo == null || correo.trim().isEmpty()) {
+            return Optional.empty();
+        }
+        return usuarioRepository.findByCorreo(correo.trim().toLowerCase());
+    }
+
     //Guardar o actualizar datos de usuario
     //Inicialmente todas las cuentas son cliente, las cuentas de Staff se crean de forma separada por
     //motivos de seguridad
