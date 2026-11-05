@@ -4,4 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import proyectoG5.LasBromelias.Domain.ReservaServicio;
 
 public interface ReservaServicioRepository extends JpaRepository<ReservaServicio, Long> {
+
+    boolean existsByReserva_IdAndServicio_Id(Long reservaId, Long servicioId);
 }
+

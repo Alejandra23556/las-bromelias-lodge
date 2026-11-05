@@ -1,0 +1,61 @@
+<!-- Fragmento Registro -->
+
+<div th:fragment="formRegistro" class="card-auth p-4 rounded-2 shadow-sm">
+    <form th:action="@{/registro}" th:object="${usuarioRegistro}" method="post">
+
+        <h4 class="mb-3 fw-semibold text-center" style="color: #2D1A0E;">Nuevo Usuario</h4>
+        <p th:if="${registroError}" th:text="${registroError}" class="text-danger"></p>
+
+        <div class="mb-3">
+            <label for="nombreRegistro" class="form-label text-dark small fw-semibold">Nombre</label>
+            <input type="text" id="nombreRegistro" th:field="*{nombre}" class="form-control rounded-1 border-0 py-2" placeholder="Nombre" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="apellidosRegistro" class="form-label text-dark small fw-semibold">Apellidos</label>
+            <input type="text" id="apellidosRegistro" th:field="*{apellidos}" class="form-control rounded-1 border-0 py-2" placeholder="Apellidos" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="correoRegistro" class="form-label text-dark small fw-semibold">Correo Electrónico</label>
+            <input type="email" id="correoRegistro" th:field="*{correo}" class="form-control rounded-1 border-0 py-2" placeholder="Correo Electrónico" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="contrasenaRegistro" class="form-label text-dark small fw-semibold">Contraseña</label>
+            <input type="password" id="contrasenaRegistro" th:field="*{contrasena}" class="form-control rounded-1 border-0 py-2" placeholder="Contraseña" required>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-auth-submit rounded-1 py-2 fw-semibold">
+                Registrarme
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- Fragmento Iniciar Sesion -->
+
+<div th:fragment="formLogin" class="card-auth p-4 rounded-2 shadow-sm">
+    <form th:action="@{/login}" method="post">
+
+        <h4 class="mb-3 fw-semibold text-center" style="color: #2D1A0E;">Iniciar Sesión</h4>
+
+        <div class="mb-3">
+            <label for="correoLogin" class="form-label text-dark small fw-semibold">Correo Electrónico</label>
+            <input type="email" id="correoLogin" name="username" class="form-control rounded-1 border-0 py-2" placeholder="Correo Electrónico" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="contrasenaLogin" class="form-label text-dark small fw-semibold">Contraseña</label>
+            <input type="password" id="contrasenaLogin" name="password" class="form-control rounded-1 border-0 py-2" placeholder="Contraseña" required>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-auth-submit rounded-1 py-2 fw-semibold">
+                Entrar
+            </button>
+        </div>
+    </form>
+</div>
+

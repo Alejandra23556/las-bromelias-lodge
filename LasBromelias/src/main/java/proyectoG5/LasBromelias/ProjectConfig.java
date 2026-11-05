@@ -3,9 +3,13 @@ package proyectoG5.LasBromelias;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import java.nio.file.Path;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -15,7 +19,13 @@ import org.thymeleaf.templatemode.TemplateMode;
 import java.util.Locale;
 
 @Configuration
+@ImportResource("classpath:security.xml")
 public class ProjectConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("ejemplo2");
+    }
 
     @Bean
     public SpringResourceTemplateResolver templateResolver_0() {
@@ -49,6 +59,20 @@ public class ProjectConfig implements WebMvcConfigurer {
         registro.addInterceptor(localeChangeInterceptor());
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        String carpetaImagenes = Path.of("uploads", "cabanas")
+                .toAbsolutePath()
+                .normalize()
+                .toUri()
+                .toString();
+        if (!carpetaImagenes.endsWith("/")) {
+            carpetaImagenes = carpetaImagenes + "/";
+        }
+        registry.addResourceHandler("/img/cabanas/**")
+                .addResourceLocations(carpetaImagenes);
+    }
+
     @Bean("messageSource")
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
@@ -57,3 +81,4 @@ public class ProjectConfig implements WebMvcConfigurer {
         return messageSource;
     }
 }
+

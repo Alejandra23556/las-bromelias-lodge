@@ -1,0 +1,62 @@
+<!-- Tarjetas de cabañas Disponibles -->
+
+<section th:fragment="tarjetasCabanas" id="cabanas" class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold" style="color: #2D1A0E;">Nuestras cabañas</h2>
+        <p class="text-muted mb-0">Conoce las opciones disponibles para tu estadía.</p>
+    </div>
+
+  <!-- Mensaje que aparecera en caso de que no hayan cabañas-->
+
+    <div th:if="${#lists.isEmpty(cabanas)}" class="alert border-0 shadow-sm p-4 text-center"
+         style="background-color: #f1f3f5; color: #2D1A0E;">
+        No hay cabañas disponibles en este momento.
+    </div>
+
+    <div th:if="${not #lists.isEmpty(cabanas)}" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+        <div class="col" th:each="cabana : ${cabanas}">
+            <article class="card h-100 border-0 shadow-sm overflow-hidden">
+                <img th:if="${cabana.fotoUrl != null and !#strings.isEmpty(cabana.fotoUrl)}"
+                     th:src="${cabana.fotoUrl}"
+                     th:alt="${cabana.nombre}"
+                     class="card-img-top cabana-card-img">
+                <div th:if="${cabana.fotoUrl == null or #strings.isEmpty(cabana.fotoUrl)}"
+                     class="cabana-card-placeholder d-flex align-items-center justify-content-center">
+                    <i class="bi bi-house-door" aria-hidden="true"></i>
+                    <span class="visually-hidden">Sin fotografía disponible</span>
+                </div>
+
+                <div class="card-body d-flex flex-column">
+                    <h3 class="card-title h5 fw-bold" style="color: #2D1A0E;" th:text="${cabana.nombre}"></h3>
+                    <p class="card-text text-muted" th:if="${cabana.descripcion != null and !#strings.isEmpty(cabana.descripcion)}"
+                       th:text="${cabana.descripcion}"></p>
+                    <p class="card-text text-muted" th:if="${cabana.descripcion == null or #strings.isEmpty(cabana.descripcion)}">
+                        Más información sobre esta cabaña próximamente.
+                    </p>
+
+                    <ul class="list-unstyled small mb-3">
+                        <li><i class="bi bi-people me-2" style="color: #4A2E1B;"></i>
+                            <span th:text="${cabana.capacidad + ' huéspedes'}"></span>
+                        </li>
+                        <li th:if="${cabana.numHabitaciones != null}">
+                            <i class="bi bi-door-open me-2" style="color: #4A2E1B;"></i>
+                            <span th:text="${cabana.numHabitaciones + ' habitaciones'}"></span>
+                        </li>
+                        <li th:if="${cabana.descripcionCamas != null and !#strings.isEmpty(cabana.descripcionCamas)}">
+                            <i class="bi bi-moon me-2" style="color: #4A2E1B;"></i>
+                            <span th:text="${cabana.descripcionCamas}"></span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-auto pt-3 border-top">
+                        <p class="mb-1 fw-semibold" style="color: #2D1A0E;">Precio por noche</p>
+                        <div class="d-flex justify-content-between gap-2">
+                            <span>₡ <span th:text="${cabana.precioCrc}"></span> CRC</span>
+                            <span>$ <span th:text="${cabana.precioUsd}"></span> USD</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>

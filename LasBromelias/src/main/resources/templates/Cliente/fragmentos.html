@@ -1,0 +1,60 @@
+<!-- Fragmento 1: Boton hacer Reserva -->
+
+<div th:fragment="botonNuevaReservacion" class="container my-4">
+    <div class="reserva-cta d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 p-4 shadow-sm">
+        <div class="text-center text-md-start">
+            <h3 class="mb-1 fw-bold" style="color: #2D1A0E;">¿Listo para tu próxima estadía?</h3>
+            <p class="mb-0 text-dark">Planea tu visita a Las Bromelias Lodge.</p>
+        </div>
+        <a href="#" class="btn btn-custom rounded-2 px-4 py-2 fw-semibold text-nowrap">
+            <i class="bi bi-plus-lg me-2"></i>Hacer nueva reservación
+        </a>
+    </div>
+</div>
+
+
+<!-- Fragmento 2: Tabla Mis Reservas -->
+
+<div th:fragment="tablaReservas" class="container py-4">
+    <h2 class="mb-4 fw-bold" style="color: #2D1A0E;">Mis Reservas</h2>
+
+    <div th:if="${#lists.isEmpty(reservas)}" class="alert border-0 shadow-sm p-4 rounded-4 text-center" style="background-color: #f1f3f5; color: #2D1A0E;">
+        <i class="bi bi-calendar-x fs-3 mb-2 d-block"></i>
+        <p class="mb-0 fw-semibold">Todavía no tienes reservas registradas.</p>
+    </div>
+
+    <div th:if="${not #lists.isEmpty(reservas)}" class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="table-responsive mb-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead style="background-color: #2D1A0E; color: #f1f3f5;">
+                <tr>
+                    <th class="py-3 px-4">Código</th>
+                    <th class="py-3 px-4">Cabaña</th>
+                    <th class="py-3 px-4">Entrada</th>
+                    <th class="py-3 px-4">Salida</th>
+                    <th class="py-3 px-4 text-center">Huéspedes</th>
+                    <th class="py-3 px-4">Total</th>
+                    <th class="py-3 px-4 text-center">Estado</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="reserva : ${reservas}">
+                    <td class="px-4 fw-semibold" style="color: #2D1A0E;" th:text="${reserva.codigo}"></td>
+                    <td class="px-4" th:text="${reserva.cabana.nombre}"></td>
+                    <td class="px-4 text-muted small" th:text="${reserva.fechaEntrada}"></td>
+                    <td class="px-4 text-muted small" th:text="${reserva.fechaSalida}"></td>
+                    <td class="px-4 text-center" th:text="${reserva.cantidadHuespedes}"></td>
+                    <td class="px-4 fw-bold" th:text="${reserva.total + ' ' + reserva.moneda}"></td>
+                    <td class="px-4 text-center">
+
+                        <span class="badge rounded-pill px-3 py-2"
+                              th:text="${reserva.estado}"
+                              th:classappend="${reserva.estado == 'CONFIRMADA' ? 'bg-success text-white' : (reserva.estado == 'PENDIENTE' ? 'bg-warning text-dark' : 'bg-secondary text-white')}">
+                            </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
