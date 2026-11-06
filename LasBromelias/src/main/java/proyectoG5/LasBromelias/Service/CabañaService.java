@@ -34,6 +34,7 @@ public class CabañaService {
         }
 
         cabana = cabanaRepository.save(cabana);
+
         if (imagenFile != null && !imagenFile.isEmpty()) {
             try {
                 String rutaImagen = storageService.uploadImage(
@@ -45,11 +46,9 @@ public class CabañaService {
                 cabana.setFotoUrl(rutaImagen);
                 cabana = cabanaRepository.save(cabana);
             } catch (IOException e) {
-                log.error("No fue posible almacenar la imagen de la cabaña {}", cabana.getId(), e);
                 throw new IllegalStateException("No fue posible guardar la imagen.", e);
             }
         }
-
         return cabana;
     }
 

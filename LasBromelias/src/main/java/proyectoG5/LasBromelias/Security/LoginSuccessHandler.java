@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 //Clase para manejar la seguridad y la separacion por roles del sistema
+//Decide a que pagina debe redirigirse cada usuario segun su rol
 
 public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 

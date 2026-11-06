@@ -22,10 +22,10 @@ import java.util.Locale;
 @ImportResource("classpath:security.xml")
 public class ProjectConfig implements WebMvcConfigurer {
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("ejemplo2");
-    }
+//    @Override
+//    public void addViewControllers(ViewControllerRegistry registry) {
+//        registry.addViewController("/").setViewName("ejemplo2");
+//    }
 
     @Bean
     public SpringResourceTemplateResolver templateResolver_0() {

@@ -1,4 +1,4 @@
-cabana-- Las Bromelias Lodge - MySQL 8.0+
+-- Las Bromelias Lodge - MySQL 8.0+
 -- Ejecutar este script con un usuario administrador de MySQL.
 -- Credenciales de la aplicación (cambiar antes de usar en producción):
 -- Usuario: app_bromelias
@@ -142,3 +142,36 @@ CREATE TABLE IF NOT EXISTS bitacora_reserva (
   CONSTRAINT fk_bitacora_reserva FOREIGN KEY (reserva_id) REFERENCES reserva (id),
   CONSTRAINT fk_bitacora_usuario FOREIGN KEY (usuario_id) REFERENCES usuario (id)
 ) ENGINE=InnoDB;
+
+
+--- Datos de prueba
+
+INSERT INTO cabana (nombre, descripcion, num_habitaciones, descripcion_camas, capacidad, precio_crc, precio_usd, foto_url, estado)
+SELECT 'Cabaña #1', 'Cabaña con balcon y vistas a la montaña', 2, 'Una cama matrimonial y camas individuales', 6, 45000.00, 90.00, NULL, 'ACTIVA'
+FROM DUAL
+WHERE NOT EXISTS (SELECT 1 FROM cabana WHERE nombre = 'Cabaña #1');
+
+INSERT INTO cabana (nombre, descripcion, num_habitaciones, descripcion_camas, capacidad, precio_crc, precio_usd, foto_url, estado)
+SELECT 'Cabaña #2', 'Cabaña con terraza y senderos.', 2, 'Una cama matrimonial y camas individuales', 6, 45000.00, 90.00, NULL, 'ACTIVA'
+FROM DUAL
+WHERE NOT EXISTS (SELECT 1 FROM cabana WHERE nombre = 'Cabaña #2');
+
+INSERT INTO usuario (nombre, apellidos, correo, contrasena, telefono, rol, activo, fecha_registro)
+VALUES ('Cliente', 'De Prueba', 'cliente@example.com', '$2a$10$66ZrEJZGZd5XtbAGG2YwROzjFGMA7kXApOhMkZ63/qtHQzzSuvL.i', '88880000', 'ROLE_CLIENT', TRUE, CURRENT_TIMESTAMP)
+ON DUPLICATE KEY UPDATE
+    contrasena = '$2a$10$66ZrEJZGZd5XtbAGG2YwROzjFGMA7kXApOhMkZ63/qtHQzzSuvL.i',
+    rol = 'ROLE_CLIENT',
+    activo = TRUE;
+
+
+INSERT INTO reserva (codigo, usuario_id, cabana_id, fecha_entrada, fecha_salida, cantidad_huespedes, lleva_mascotas, moneda, precio_noche_aplicado, total, estado, origen, fecha_creacion, fecha_limite_pago)
+SELECT 'RES-PRUEBA-001', (SELECT id FROM usuario WHERE correo = 'cliente@example.com' LIMIT 1), (SELECT id FROM cabana WHERE nombre = 'Cabaña #1' ORDER BY id LIMIT 1), '2026-12-10', '2026-12-13', 4, FALSE, 'CRC', 45000.00, 135000.00, 'CONFIRMADA', 'WEB', CURRENT_TIMESTAMP, NULL
+FROM DUAL
+WHERE NOT EXISTS (SELECT 1 FROM reserva WHERE codigo = 'RES-PRUEBA-001');
+
+INSERT INTO reserva (codigo, usuario_id, cabana_id, fecha_entrada, fecha_salida, cantidad_huespedes, lleva_mascotas, moneda, precio_noche_aplicado, total, estado, origen, fecha_creacion, fecha_limite_pago)
+SELECT 'RES-PRUEBA-002', (SELECT id FROM usuario WHERE correo = 'cliente@example.com' LIMIT 1), (SELECT id FROM cabana WHERE nombre = 'Cabaña #2' ORDER BY id LIMIT 1), '2027-01-15', '2027-01-17', 2, FALSE, 'USD', 90.00, 180.00, 'CONFIRMADA', 'WEB', CURRENT_TIMESTAMP, NULL
+FROM DUAL
+WHERE NOT EXISTS (SELECT 1 FROM reserva WHERE codigo = 'RES-PRUEBA-002');
+
+
