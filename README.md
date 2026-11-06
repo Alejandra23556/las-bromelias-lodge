@@ -7,8 +7,7 @@ Aplicación web transaccional para la gestión de reservas en línea desarrollad
 ## Integrantes del Equipo (Grupo 5)
 * María José Segura Díaz
 * María Alejandra Granada Vega
-* Emmanuel Calderón Soto
-* Joseph Armas Díaz
+
 
 **Profesor:** Andrés Aiello Rodríguez  
 **Curso:** Desarrollo de Aplicaciones Web y Patrones | Universidad Fidélitas
@@ -36,3 +35,34 @@ Para asegurar un desarrollo ordenado y colaborativo, el equipo aplicará la sigu
    * Queda prohibido hacer `push` directo a `main` o `develop`.
    * Para integrar código a `develop`, se debe abrir un Pull Request (PR).
    * Cada PR debe ser revisado y aprobado por al menos un compañero de equipo antes de fusionarlo (merge).
+
+## Ejecución del proyecto
+
+### Requisitos
+
+- Java 21
+- MySQL Server en ejecución en el puerto `3306`
+- IntelliJ IDEA u otro IDE compatible con proyectos Maven
+
+### Preparar la base de datos
+
+1. Abre MySQL Workbench e inicia sesión con un usuario administrador.
+2. Abre el archivo `src/main/resources/las_bromelias_lodge.sql`.
+3. Ejecuta el script completo. Este crea la base de datos, las tablas y los datos de prueba, además del usuario MySQL que utiliza la aplicación.
+4. Verifica que las credenciales de conexión en `src/main/resources/application.properties` coincidan con las definidas en el script.
+
+### Iniciar la aplicación
+
+1. Abre el proyecto en IntelliJ IDEA y espera a que Maven descargue las dependencias.
+2. Desde la carpeta principal del proyecto, ejecuta la clase principal de Spring Boot, la que tiene la anotación `@SpringBootApplication`.
+3. Cuando la aplicación haya iniciado, abre en el navegador:
+
+   http://localhost:8081
+
+### Usuario de prueba
+
+- Correo: `cliente.prueba@bromelias.com`
+- Contraseña: `ClienteG5!2026`
+
+La aplicación guarda las imágenes cargadas en la carpeta `uploads` dentro de la carpeta principal del proyecto.
+
