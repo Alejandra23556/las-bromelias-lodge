@@ -61,7 +61,7 @@ Para asegurar un desarrollo ordenado y colaborativo, el equipo aplicará la sigu
 
 ### Usuario de prueba
 
-- Correo: `cliente.prueba@bromelias.com`
+- Correo: `cliente@example.com`
 - Contraseña: `ClienteG5!2026`
 
 La aplicación guarda las imágenes cargadas en la carpeta `uploads` dentro de la carpeta principal del proyecto.
